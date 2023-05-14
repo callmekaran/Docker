@@ -1,0 +1,35 @@
+services:
+    wildfly:
+        build: .
+        container_name: docker_wildfly
+        ports:
+           - "8986:8986"
+           - "8443:8443"
+           - "8080:8080"
+           - "80:80"
+           - "443:443"
+        tty: true
+        volumes:
+            - ~/solr:/solr 
+            - ~/application:/application
+            - ~/frontend:/usr/share/nginx/html
+            - ~/sites-enabled:/etc/nginx/sites-enabled
+            - ~/frontendssl:/etc/sslcer
+            - ~/efs:/efs
+    db:
+        image: postgres:installed
+        container_name: docker_db
+        environment:
+             POSTGRES_PASSWORD: postgres
+             POSTGRES_USER: postgres
+             POSTGRES_DB: postgres
+        ports:
+            - "5432:5432"
+        volumes:
+                # - ./docker.sql:/docker-entrypoint-initdb.d/docker.sql
+            - ./kriyareeti_clean_DB.sql:/kriyareeti_clean_DB.sql
+            - ./admin_clean_DB.sql:/admin_clean_DB.sql
+            - ./greenbox_clean_DB.sql:/greenbox_clean_DB.sql
+              # - ./pgrestore.sh:/docker-entrypoint-initdb.d/pgrestore.sh
+            - ./pgdata:/var/lib/postgresql/data
+        tty: true
