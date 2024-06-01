@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  backend:
+    image: karanravat/node-backend:latest
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    networks:
+      - app-network
+
+  frontend:
+    image: karanravat/react-frontend
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
