@@ -52,6 +52,15 @@ ecs-cli configure --cluster tutorial --region us-west-2 --default-launch-type EC
 
 ecs-cli compose --project-name tutorial --file docker-compose.yaml --debug service up --deployment-max-percent 100 --deployment-min-healthy-percent 0 --region us-west-2 --ecs-profile tutorial --cluster-config tutorial
 
+Create Service with elb 1st create elb, tgs
+
+aws ecs create-service --cluster Dev-Cluster \
+                      --service-name Dev-Service \
+                      --task-definition Dev-Cluster:1 \
+                      --desired-count 1 \
+                      --load-balancers targetGroupArn=arn:aws:elasticloadbalancing:us-west-1:058264385073:targetgroup/backend/a8008fd7e201d380,containerName=backend,containerPort=3000 targetGroupArn=arn:aws:elasticloadbalancing:us-west-1:058264385073:targetgroup/frontend/835d4b74f6bbc4dc,containerName=frontend,containerPort=80
+
+
 **step 6 : Manual Step Create Target Groups add ec2, load balancer**
 
 **step 7 : Update Service with This command to attach elb**
