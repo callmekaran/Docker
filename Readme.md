@@ -49,7 +49,7 @@ ecs-cli up \
 **Step 5: Deploy Docker Compose Services**
 
 ecs-cli configure --cluster tutorial --region us-west-2 --default-launch-type EC2 --config-name tutorial
-
+#This will create Task defination
 ecs-cli compose --project-name tutorial --file docker-compose.yaml --debug service up --deployment-max-percent 100 --deployment-min-healthy-percent 0 --region us-west-2 --ecs-profile tutorial --cluster-config tutorial
 
 Create Service with elb 1st create elb, tgs
