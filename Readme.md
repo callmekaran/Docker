@@ -48,6 +48,8 @@ ecs-cli up \
 
 **Step 5: Deploy Docker Compose Services**
 
+ecs-cli configure --cluster tutorial --region us-west-2 --default-launch-type EC2 --config-name tutorial
+
 ecs-cli compose --project-name tutorial --file docker-compose.yaml --debug service up --deployment-max-percent 100 --deployment-min-healthy-percent 0 --region us-west-2 --ecs-profile tutorial --cluster-config tutorial
 
 **step 6 : Manual Step Create Target Groups add ec2, load balancer**
@@ -65,7 +67,8 @@ aws ecs update-service \
 
 ###############################################**NOTE**#############################################
 
-You can do things manually too
+**You can do things manually too**
+
 Just use step5 and step 7 
 
 
