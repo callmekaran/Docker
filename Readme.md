@@ -11,6 +11,7 @@ export AWS_DEFAULT_REGION=ap-south-1
 **Step 2: Setup CLuster First**
 
 #!/bin/bash
+
 set -e
 
 # Define variables
