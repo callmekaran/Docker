@@ -13,6 +13,7 @@ export AWS_DEFAULT_REGION=ap-south-1
 #!/bin/bash
 set -e
 
+
 # Define variables
 PROFILE_NAME=tutorial
 CLUSTER_NAME=tutorial-cluster
