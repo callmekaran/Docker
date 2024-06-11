@@ -8,6 +8,7 @@ export AWS_ACCESS_KEY_ID="AKIAQ3YYKVDXMWO"
 export AWS_SECRET_ACCESS_KEY="tgl1GW5Uziq1RUU6MaqWu8FEqwgBL2un"
 export AWS_DEFAULT_REGION=ap-south-1
 
+
 **Step 2: Setup CLuster First**
 
 #!/bin/bash
