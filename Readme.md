@@ -1,5 +1,6 @@
 **Deploying Application on AWS ECS**
 
+
 **Step 1: Setup AWS CLI**
 
 #Open a terminal and set up AWS CLI environment variables:
