@@ -11,10 +11,13 @@ WORKDIR /home/ubuntu/app
 USER ubuntu
 
 # Copy the application files to the container
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .
 
 # Install dependencies
 RUN npm install
+
+#Copy Other Application Code
+COPY . .
 
 # Build the application
 RUN npm run build
