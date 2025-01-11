@@ -1,0 +1,38 @@
+# Stage 1: Build the application
+FROM node:20 AS build
+
+# Create a system user "ubuntu" and add it to the "ubuntu" group
+RUN useradd ubuntu
+
+# Set the working directory to /home/ubuntu/app
+WORKDIR /home/ubuntu/app
+
+# Work as the non-root ubuntu user
+USER ubuntu
+
+# Copy the application files to the container
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Build the application
+RUN npm run build
+
+# Stage 2: Create the runtime environment
+FROM node:14 AS runtime
+
+# Create a system user "ubuntu" and add it to the "ubuntu" group
+RUN useradd ubuntu
+
+# Set the working directory to /home/ubuntu/app
+WORKDIR /home/ubuntu/app
+
+# Switch to the non-root ubuntu user
+USER ubuntu
+
+# Copy only the build artifacts and necessary files from the build stage
+COPY --from=build /home/ubuntu/app /home/ubuntu/app
+
+# Start the application
+CMD ["npm", "start"]
