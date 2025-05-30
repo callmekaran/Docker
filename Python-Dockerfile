@@ -1,0 +1,7 @@
+FROM python3:11-slim
+RUN useradd -m ubuntu -s /bin/bash
+USER ubuntu
+COPY requirment.txt .
+RUN python3.11 install -r requirment.txt
+COPY . .
+CMD [ "python3.11" "app.py" ]
